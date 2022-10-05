@@ -1,0 +1,101 @@
+{
+  "$kind": "Microsoft.AdaptiveDialog",
+  "$designer": {
+    "id": "BSsEMz",
+    "name": "getWeather",
+    "comment": ""
+  },
+  "autoEndDialog": true,
+  "defaultResultProperty": "dialog.result",
+  "triggers": [
+    {
+      "$kind": "Microsoft.OnBeginDialog",
+      "$designer": {
+        "name": "BeginDialog",
+        "description": "",
+        "id": "xdcqmT"
+      },
+      "actions": [
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "VIUvDM"
+          },
+          "activity": "${SendActivity_VIUvDM()}"
+        },
+        {
+          "$kind": "Microsoft.TextInput",
+          "$designer": {
+            "id": "IsutzJ"
+          },
+          "disabled": false,
+          "maxTurnCount": 3,
+          "alwaysPrompt": false,
+          "allowInterruptions": false,
+          "unrecognizedPrompt": "${TextInput_UnrecognizedPrompt_IsutzJ()}",
+          "prompt": "${TextInput_Prompt_IsutzJ()}",
+          "property": "user.city",
+          "outputFormat": "=trim(this.value)",
+          "defaultValue": "Cidade,UF"
+        },
+        {
+          "$kind": "Microsoft.HttpRequest",
+          "$designer": {
+            "id": "QDrKKk"
+          },
+          "resultProperty": "dialog.api_response",
+          "method": "GET",
+          "responseType": "json",
+          "url": "https://api.hgbrasil.com/weather?key=f5c5d7ae&city_name=${user.city}"
+        },
+        {
+          "$kind": "Microsoft.IfCondition",
+          "$designer": {
+            "id": "fZJPaG"
+          },
+          "condition": "=dialog.api_response.statusCode == 200",
+          "actions": [
+            {
+              "$kind": "Microsoft.SetProperties",
+              "$designer": {
+                "id": "cCxMpz"
+              },
+              "assignments": [
+                {
+                  "property": "dialog.weather",
+                  "value": "=dialog.api_response.content"
+                }
+              ]
+            },
+            {
+              "$kind": "Microsoft.SendActivity",
+              "$designer": {
+                "id": "4nLMfM"
+              },
+              "activity": "${SendActivity_4nLMfM()}"
+            }
+          ],
+          "elseActions": [
+            {
+              "$kind": "Microsoft.SendActivity",
+              "$designer": {
+                "id": "L6GtYb"
+              },
+              "activity": "${SendActivity_L6GtYb()}"
+            },
+            {
+              "$kind": "Microsoft.DeleteProperty",
+              "$designer": {
+                "id": "j1yHGA"
+              },
+              "property": "user.city"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "generator": "getWeather.lg",
+  "recognizer": "getWeather.lu.qna",
+  "id": "getWeather"
+}

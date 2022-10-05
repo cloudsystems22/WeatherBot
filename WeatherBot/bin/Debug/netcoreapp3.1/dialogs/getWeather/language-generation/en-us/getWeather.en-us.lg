@@ -1,0 +1,41 @@
+[import](common.lg)
+
+# SendActivity_VIUvDM()
+[Activity
+    Text = ${SendActivity_VIUvDM_text()}
+]
+
+# SendActivity_VIUvDM_text()
+- Vamos checar.
+- Vou verificar.
+# TextInput_Prompt_IsutzJ()
+[Activity
+    Text = ${TextInput_Prompt_IsutzJ_text()}
+]
+
+# TextInput_Prompt_IsutzJ_text()
+- Informe seu municípo e estado.
+# TextInput_UnrecognizedPrompt_IsutzJ()
+[Activity
+    Text = ${TextInput_UnrecognizedPrompt_IsutzJ_text()}
+]
+
+# TextInput_UnrecognizedPrompt_IsutzJ_text()
+- - Não consigo reconhecer. Tente esse formato Ex. Cidade,UF
+- - Por favor, pode reformular?
+- - Tente esse formato Ex. Cidade,UF
+# SendActivity_4nLMfM()
+[Activity
+    Text = ${SendActivity_4nLMfM_text()}
+]
+
+# SendActivity_4nLMfM_text()
+- ```Temperatura: ${dialog.api_response.content.results.temp} °C,  ${dialog.api_response.content.results.description}  hoje: ${dialog.api_response.content.results.date} horário: ${dialog.api_response.content.results.time} 
+Previsão, hoje ${dialog.api_response.content.results.forecast[0].description}, temperatura max:   ${dialog.api_response.content.results.forecast[0].max} °C , min: ${dialog.api_response.content.results.forecast[0].min}°C.```
+# SendActivity_L6GtYb()
+[Activity
+    Text = ${SendActivity_L6GtYb_text()}
+]
+
+# SendActivity_L6GtYb_text()
+- Encontramos um problema ${dialog.api_response}

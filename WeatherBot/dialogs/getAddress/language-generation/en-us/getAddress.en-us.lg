@@ -1,0 +1,33 @@
+[import](common.lg)
+
+# SendActivity_fgEKUQ()
+[Activity
+    Text = ${SendActivity_fgEKUQ_text()}
+]
+
+# SendActivity_fgEKUQ_text()
+- Vamos, pesquisar.
+- Checando...
+# TextInput_Prompt_UoyUSU()
+[Activity
+    Text = ${TextInput_Prompt_UoyUSU_text()}
+]
+
+# TextInput_Prompt_UoyUSU_text()
+- Por favor informe o CEP.
+- Informe o CEP por favor.
+# SendActivity_WRW3tI()
+[Activity
+    Text = ${SendActivity_WRW3tI_text()}
+]
+
+# SendActivity_WRW3tI_text()
+- Encontramos um problema ${dialog.api_response}
+# SendActivity_on0TAW()
+[Activity
+    Text = ${SendActivity_on0TAW_text()}
+]
+
+# SendActivity_on0TAW_text()
+- ```Encontrei o seguinte endereço:
+Logradouro: ${dialog.api_response.content.logradouro}, bairro: ${dialog.api_response.content.bairro}, município: ${dialog.api_response.content.localidade}, ${dialog.api_response.content.uf}```

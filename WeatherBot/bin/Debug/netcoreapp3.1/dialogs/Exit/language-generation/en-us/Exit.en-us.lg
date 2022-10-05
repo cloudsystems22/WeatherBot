@@ -1,0 +1,11 @@
+[import](common.lg)
+
+# SendActivity_S2kW3p()
+[Activity
+    Text = ${SendActivity_S2kW3p_text()}
+]
+
+# SendActivity_S2kW3p_text()
+- Foi muito bom te atender, espero você de volta!
+- Te espero de volta!
+- Espero ter te ajudado tchau!
